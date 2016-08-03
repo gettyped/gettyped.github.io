@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-08-03 Wed 12:11 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title><a href="../index.html#orgheadline2">type</a> » Valid</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Jeremy Hughes">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<style>
+ a:not(:link):not(:visited) {
+     color: inherit;
+     cursor: inherit;
+ }
+
+ li {
+     margin-left: 0;
+     list-style: outside circle;
+ }
+
+ h1.title {
+     text-align: left;
+     margin: 0 -52px 0 -52px;
+     padding: 24px 0 0.5em 52px;
+     color: whitesmoke;
+     background: #5ea2ca;
+ }
+
+ #table-of-contents + p {
+     margin-top: 24px;
+ }
+
+ #content > .MOTIVATION:before {
+     content: 'Motivation';
+     font-weight: bold;
+     display: block;
+     line-height: 1.5em;
+     font-size: large;
+     font-family: 'Roboto Slab';
+     color: #0f50a2;
+ }
+
+ #content > .MOTIVATION {
+     margin: 0 -52px 12px -52px;
+     padding: 24px 0 1px 52px;
+     background-color: #b8dcf1;
+ }
+
+ #content {
+     padding: 0 52px 2em 52px;
+     margin-top: 48px;
+ }
+
+ #table-of-contents {
+     overflow-y: auto;
+     top: 48px;
+     padding-top: 24px;
+ }
+
+ #table-of-contents > h2 {
+     display: none;
+ }
+
+ #org-div-home-and-up {
+     visibility: hidden;
+     height: 0;
+ }
+
+ #org-div-home-and-up > a[accesskey=H]:before {
+     content: 'Get Typed — motivations for using static types';
+     visibility: visible;
+     display: block;
+     position: fixed;
+     z-index: 900;
+     background: #0f50a2;
+     color: #b8dcf1;
+     font-size: x-large;
+     line-height: 48px;
+     left: 0;
+     top: 0;
+     max-width: 800px;
+     width: 100%;
+     padding-right: 276px;
+     padding-left: 24px;
+     text-align: left;
+     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+ }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="/"> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content">
+<header>
+<h1 class="title"><a href="../index.html#orgheadline2">type</a> » Valid</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Correct by construction</a></li>
+<li><a href="#orgheadline8">Implementations</a>
+<ul>
+<li><a href="#orgheadline6">Purescript implementation</a>
+<ul>
+<li><a href="#orgheadline2">Valid type</a></li>
+<li><a href="#orgheadline3">Validator class</a></li>
+<li><a href="#orgheadline4">Validate function</a></li>
+<li><a href="#orgheadline5">Complete module</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline7">Flow implementation</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">Static guarantees</a>
+<ul>
+<li><a href="#orgheadline9">Statically guaranteed validity</a></li>
+<li><a href="#orgheadline10">Statically guaranteed invalid result handling</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div class="MOTIVATION">
+<ul class="org-ul">
+<li>Validate a value once and once only</li>
+<li>Have type-level proof that a value has been validated with a specific
+validator</li>
+<li>Statically guarantee that invalid results are handled</li>
+</ul>
+
+</div>
+
+<p>
+<code>Valid</code> guarantees that validation occurs once and once only. It retains
+type-level proof of which validation was performed.
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Correct by construction</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+The <code>Valid</code> type is a simple wrapper. The only way to wrap something in <code>Valid</code>
+is to supply a value and a <code>Validator</code> for values of that type to the <code>validate</code>
+function. A <code>Validator</code> ensures only valid values are wrapped and also ensures
+that invalid values are handled. This runtime validation provides the
+compile-time guarantee that any <code>Valid</code> encountered in the wild contains a value
+that is valid according to supplied <code>Validator</code>.
+</p>
+
+<p>
+For example, assuming a validator called <code>Natural</code> that ensures integer values
+are greater than zero, the types, <code>Valid Natural Int</code> (Purescript) and
+<code>Valid&lt;Natural, int&gt;</code> (C#) can only be inhabited by a <code>Valid</code> value containing
+an integer greater than zero. The <code>Natural</code> type parameter is proof that the
+validation has occurred.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">Implementations</h2>
+<div class="outline-text-2" id="text-orgheadline8">
+</div><div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Purescript implementation</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2">Valid type</h4>
+<div class="outline-text-4" id="text-orgheadline2">
+<p>
+A <code>Valid</code> type needs to wrap a value and retain type-level information about
+which validation was used.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript" id="orgsrcblock1"><span class="org-keyword">newtype</span> <span class="org-type">Valid</span> v a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> a
+</pre>
+</div>
+<p>
+To ensure a <code>Valid</code> value can be created only as the result of a validation, the
+<code>MkValid</code> constructor will not be exported.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">Validator class</h4>
+<div class="outline-text-4" id="text-orgheadline3">
+<p>
+A <code>Validator</code> takes a value and returns some higher kinded type parameterized by
+that value’s type.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript" id="orgsrcblock2"><span class="org-keyword">class</span> <span class="org-type">Validator</span> v f a <span class="org-keyword">where</span>
+  validator <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v <span class="org-variable-name">-&gt;</span> a <span class="org-variable-name">-&gt;</span> f a
+</pre>
+</div>
+<p>
+The phantom type parameter <code>v</code> is essentially a type-level label for the
+<code>Validator</code> instance, since for each <code>f,a</code> pair there is likely to be more than
+one possible validation.
+</p>
+
+<p>
+The HKT, <code>f</code>, denotes the strategy a <code>Validator</code> instance uses to differentiate
+valid and invalid results.
+</p>
+
+<p>
+Some possibilities for <code>f</code> are:
+</p>
+<dl class="org-dl">
+<dt>Maybe</dt><dd><code>validate</code> returns <code>Some (Valid v a)</code> or <code>Nothing</code>. Simple but
+provides no reason why validation failed.</dd>
+<dt>Either error</dt><dd><code>validate</code> returns <code>Left error</code> or <code>Right (Valid v a)</code>. Like
+<code>Maybe</code> but provides a reason for failure.</dd>
+<dt>Validation error</dt><dd><code>validate</code> returns <code>Failure (NonEmptyList error)</code> or
+<code>Success (Valid v a)</code>. Like <code>Either</code> but accumulates errors rather than
+stopping at the first one.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">Validate function</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<p>
+The <code>validate</code> function takes a value, validates it using the selected
+<code>Validator</code> instance, and wraps a valid result in the <code>Valid</code> type.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript" id="orgsrcblock3"><span class="org-function-name">validate</span> <span class="org-variable-name">::</span> <span class="org-variable-name">&#8704;</span> v f a<span class="org-variable-name">.</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Validator</span> v f a, <span class="org-type">Functor</span> f<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-variable-name">=&gt;</span> a <span class="org-variable-name">-&gt;</span> f <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Valid</span> v a<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-function-name">validate</span> a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> <span class="org-variable-name">&lt;$&gt;</span> validator <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Proxy</span> <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v<span class="org-rainbow-delimiters-depth-1">)</span> a
+</pre>
+</div>
+<p>
+It constrains <code>Validator~’s ~f</code> to be a <code>Functor</code> so the <code>MkValid</code> constructor
+function can be mapped over the result of <code>validator</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">Complete module</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<p>
+Here it is as a <a href="https://github.com/gettyped/gettyped/purescript/src/GetTyped/Valid.purs">complete module</a>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-keyword">module</span> <span class="org-type">GetTyped.Valid</span>
+  <span class="org-rainbow-delimiters-depth-1">(</span> <span class="org-keyword">class</span> <span class="org-type">Validator</span>
+  , validator
+  , <span class="org-type">Valid</span>
+  , validate
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-keyword">where</span>
+
+<span class="org-keyword">import</span> <span class="org-type">Prelude</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">&lt;$&gt;</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-keyword">import</span> <span class="org-type">Type.Proxy</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Proxy</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">..</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">&lt;&lt;</span>valid<span class="org-variable-name">-</span><span class="org-keyword">type</span><span class="org-variable-name">&gt;&gt;</span>
+
+<span class="org-variable-name">&lt;&lt;</span>validator<span class="org-variable-name">-</span><span class="org-keyword">class</span><span class="org-variable-name">&gt;&gt;</span>
+
+<span class="org-variable-name">&lt;&lt;</span>validate<span class="org-variable-name">-</span>function<span class="org-variable-name">&gt;&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Flow implementation</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">@flow</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">class</span> Valid&lt;V, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    value: A;
+
+    constructor<span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+        <span class="org-constant">this</span>.value = a;
+    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">function</span> <span class="org-function-name">mkValid</span>&lt;V, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>a: A<span class="org-rainbow-delimiters-depth-1">)</span>: Valid&lt;V, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-keyword">new</span> <span class="org-type">Valid</span><span class="org-rainbow-delimiters-depth-2">(</span>a<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> type Success&lt;A&gt; = <span class="org-rainbow-delimiters-depth-1">{</span>tag: <span class="org-string">"success"</span>, value: A<span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="org-keyword">export</span> type Failure&lt;E&gt; = <span class="org-rainbow-delimiters-depth-1">{</span>tag: <span class="org-string">"failure"</span>, errors: <span class="org-rainbow-delimiters-depth-2">[</span>E<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="org-keyword">export</span> type Validation&lt;E, A&gt; = Success&lt;A&gt; | Failure&lt;E&gt;;
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> success&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>a: A<span class="org-rainbow-delimiters-depth-1">)</span>: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">{</span>tag: <span class="org-string">"success"</span>, value: a<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> failure&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>errs: <span class="org-rainbow-delimiters-depth-2">[</span>E<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">{</span>tag: <span class="org-string">"failure"</span>, errors: errs<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> validationErrors&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>v: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>: <span class="org-rainbow-delimiters-depth-1">[</span>E<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>v.tag === <span class="org-string">"failure"</span>
+            ? v.errors
+            : <span class="org-rainbow-delimiters-depth-3">[]</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> mapValidation&lt;E, A, B&gt;<span class="org-rainbow-delimiters-depth-1">(</span>f: <span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span> =&gt; B, v: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>
+: Validation&lt;E, B&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>v.tag === <span class="org-string">"failure"</span>
+            ? <span class="org-rainbow-delimiters-depth-3">{</span>tag: <span class="org-string">"failure"</span>, errors: v.errors<span class="org-rainbow-delimiters-depth-3">}</span>
+            : <span class="org-rainbow-delimiters-depth-3">{</span>tag: <span class="org-string">"success"</span>, value: f<span class="org-rainbow-delimiters-depth-4">(</span>v.value<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> takeLeftValidation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>l: Validation&lt;E, A&gt;, r: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>
+: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>l.tag === <span class="org-string">"failure"</span> || r.tag === <span class="org-string">"failure"</span>
+            ? failure<span class="org-rainbow-delimiters-depth-3">(</span>validationErrors<span class="org-rainbow-delimiters-depth-4">(</span>l<span class="org-rainbow-delimiters-depth-4">)</span>.concat<span class="org-rainbow-delimiters-depth-4">(</span>validationErrors<span class="org-rainbow-delimiters-depth-5">(</span>r<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+            : l<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">interface</span> Validator&lt;A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    validator<span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, A&gt;;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> validate&lt;A, V: Validator&lt;A&gt;&gt;<span class="org-rainbow-delimiters-depth-1">(</span>v: V, a: A<span class="org-rainbow-delimiters-depth-1">)</span>
+: Validation&lt;Error, Valid&lt;V, A&gt;&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> mapValidation<span class="org-rainbow-delimiters-depth-2">(</span>mkValid, v.validator<span class="org-rainbow-delimiters-depth-3">(</span>a<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">class</span> Integer <span class="org-rainbow-delimiters-depth-1">{</span>
+    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
+        <span class="org-keyword">return</span> x % <span class="org-highlight-numbers-number">1</span> === <span class="org-highlight-numbers-number">0</span> ? success<span class="org-rainbow-delimiters-depth-3">(</span>x<span class="org-rainbow-delimiters-depth-3">)</span> : failure<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"floating"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">class</span> Natural <span class="org-rainbow-delimiters-depth-1">{</span>
+    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
+        <span class="org-keyword">return</span> takeLeftValidation<span class="org-rainbow-delimiters-depth-3">(</span>
+            <span class="org-keyword">new</span> <span class="org-type">Integer</span><span class="org-rainbow-delimiters-depth-4">()</span>.validator<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span>,
+            x &gt; <span class="org-highlight-numbers-number">0</span> ? success<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span> : failure<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-string">"&lt;= 0"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">class</span> Negative <span class="org-rainbow-delimiters-depth-1">{</span>
+    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
+        <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-3">(</span>x &gt; <span class="org-highlight-numbers-number">0</span>
+                ? success<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span>
+                : failure<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-string">"Not negative"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span>
+
+<span class="org-keyword">function</span> <span class="org-function-name">addNats</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">x</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;, <span class="org-variable-name">y</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;<span class="org-rainbow-delimiters-depth-1">)</span>: <span class="org-variable-name">number</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">return</span> x.value + y.value;
+<span class="org-rainbow-delimiters-depth-1">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">Static guarantees</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+</div><div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">Statically guaranteed validity</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+With <code>Valid</code> it is possible to ensure at compile-time that a function argument
+is valid according to a specific <code>Validator</code>.
+</p>
+
+<p>
+For example:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-keyword">data</span> <span class="org-type">Ascii</span>
+
+<span class="org-keyword">instance</span> asciiValidator <span class="org-variable-name">::</span> <span class="org-type">Validator</span> <span class="org-type">Ascii</span> <span class="org-type">Maybe</span> <span class="org-type">String</span> <span class="org-keyword">where</span>
+  validator <span class="org-keyword">_</span> name <span class="org-variable-name">=</span> <span class="org-keyword">if</span> isOnlyAscii name <span class="org-keyword">then</span> <span class="org-type">Just</span> name <span class="org-keyword">else</span> <span class="org-type">Nothing</span>
+
+<span class="org-function-name">usernameHash</span> <span class="org-variable-name">::</span> <span class="org-type">Valid</span> <span class="org-type">Ascii</span> <span class="org-type">String</span> <span class="org-variable-name">-&gt;</span> <span class="org-type">Int</span>
+</pre>
+</div>
+
+<p>
+The type <code>Valid AsciiUsername String</code> of the argument to <code>usernameHash</code>
+constitutes compile-time proof that any value the function receives will be
+valid according to the <code>AsciiUsername</code> validator.
+</p>
+
+<p>
+This is because the only way to provide a <code>Valid AsciiUsername String</code> to
+<code>usernameHash</code> is by calling <code>validate</code> on a <code>String</code>.
+</p>
+
+<p>
+This would look something like:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-function-name">map</span> usernameHash <span class="org-rainbow-delimiters-depth-1">(</span>validate usernameString<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-variable-name">::</span> <span class="org-type">Maybe</span> <span class="org-type">Int</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">Statically guaranteed invalid result handling</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<p>
+In a language with higher kinds, a <code>Validator</code> can be written to use whichever
+result handling makes most sense by using an appropriate type constructor for
+<code>f</code>. The type of <code>f</code> decides what result handing is required.
+</p>
+
+<p>
+A polymorphic <code>f</code> also allows validation to be performed in an <i>effectful</i>
+context, though that can reduce the strength of the guarantee depending on what
+effects are allowed. E.g. If validity becomes time-dependent the compile-time
+guarantee is no longer a complete one, but becomes, “this value is valid
+according to <code>v</code> validator modulo time-dependent factors”.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
