@@ -406,6 +406,10 @@ body {
     color: whitesmoke;
 }
 
+.branch-navigation h3 {
+    margin: 1.6rem auto;
+}
+
 .branch-navigation a {
     color: whitesmoke;
     text-decoration: none;
@@ -415,7 +419,6 @@ body {
 .branch-navigation a i {
     font-style: normal;
     color: grey;
-    margin-left: 0.8rem;
 }
 
 .branch-navigation h2 {
