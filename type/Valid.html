@@ -1,99 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-04 Thu 11:07 -->
+<!-- 2016-08-07 Sun 18:47 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Valid</title>
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Jeremy Hughes">
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  /*]]>*/-->
-</style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="/_static/main.css">
 <link rel="stylesheet" type="text/css" href="/_static/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/_static/readtheorg.css"/>
+<script src="/_static/main.js"></script>
+<!-- link rel="stylesheet" type="text/css" href="/_static/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/_static/readtheorg.js"></script>
@@ -182,53 +100,7 @@
      text-align: left;
      box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
  }
-</style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style -->
 </head>
 <body>
 <div id="org-div-home-and-up">
@@ -242,29 +114,62 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">Correct by construction</a></li>
-<li><a href="#orgheadline8">Implementations</a>
+<li><a href="#orgheadline8">Correct by construction</a></li>
+<li><a href="#orgheadline15">Implementations</a>
 <ul>
-<li><a href="#orgheadline6">Purescript implementation</a>
+<li><a href="#orgheadline13">Purescript implementation</a>
 <ul>
-<li><a href="#orgheadline2">Valid type</a></li>
-<li><a href="#orgheadline3">Validator class</a></li>
-<li><a href="#orgheadline4">Validate function</a></li>
-<li><a href="#orgheadline5">Complete module</a></li>
+<li><a href="#orgheadline9">Valid type</a></li>
+<li><a href="#orgheadline10">Validator class</a></li>
+<li><a href="#orgheadline11">Validate function</a></li>
+<li><a href="#orgheadline12">Complete module</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline7">Flow implementation</a></li>
+<li><a href="#orgheadline14">Flow implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline11">Static guarantees</a>
+<li><a href="#orgheadline18">Static guarantees</a>
 <ul>
-<li><a href="#orgheadline9">Statically guaranteed validity</a></li>
-<li><a href="#orgheadline10">Statically guaranteed invalid result handling</a></li>
+<li><a href="#orgheadline16">Statically guaranteed validity</a></li>
+<li><a href="#orgheadline17">Statically guaranteed invalid result handling</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
+
+<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+</div>
+<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
+<h3 id="orgheadline2">Motivations</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3 branch-type">
+<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3 branch-example">
+<h3 id="orgheadline4">Examples</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
+<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2 hide">
+<h2 id="orgheadline7">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <div class="MOTIVATION">
 <ul class="org-ul">
 <li>Validate a value once and once only</li>
@@ -279,10 +184,12 @@ validator</li>
 <code>Valid</code> guarantees that validation occurs once and once only. It retains
 type-level proof of which validation was performed.
 </p>
+</div>
+</div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Correct by construction</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgheadline8" class="outline-2 asdf">
+<h2 id="orgheadline8">Correct by construction</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <p>
 The <code>Valid</code> type is a simple wrapper. The only way to wrap something in <code>Valid</code>
 is to supply a value and a <code>Validator</code> for values of that type to the <code>validate</code>
@@ -302,15 +209,15 @@ validation has occurred.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">Implementations</h2>
-<div class="outline-text-2" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Purescript implementation</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-</div><div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2">Valid type</h4>
-<div class="outline-text-4" id="text-orgheadline2">
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15">Implementations</h2>
+<div class="outline-text-2" id="text-orgheadline15">
+</div><div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13">Purescript implementation</h3>
+<div class="outline-text-3" id="text-orgheadline13">
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">Valid type</h4>
+<div class="outline-text-4" id="text-orgheadline9">
 <p>
 A <code>Valid</code> type needs to wrap a value and retain type-level information about
 which validation was used.
@@ -327,9 +234,9 @@ To ensure a <code>Valid</code> value can be created only as the result of a vali
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3">Validator class</h4>
-<div class="outline-text-4" id="text-orgheadline3">
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">Validator class</h4>
+<div class="outline-text-4" id="text-orgheadline10">
 <p>
 A <code>Validator</code> takes a value and returns some higher kinded type parameterized by
 that value’s type.
@@ -366,152 +273,154 @@ stopping at the first one.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">Validate function</h4>
-<div class="outline-text-4" id="text-orgheadline4">
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">Validate function</h4>
+<div class="outline-text-4" id="text-orgheadline11">
 <p>
 The <code>validate</code> function takes a value, validates it using the selected
 <code>Validator</code> instance, and wraps a valid result in the <code>Valid</code> type.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-purescript" id="orgsrcblock3"><span class="org-function-name">validate</span> <span class="org-variable-name">::</span> <span class="org-variable-name">&#8704;</span> v f a<span class="org-variable-name">.</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Validator</span> v f a, <span class="org-type">Functor</span> f<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-variable-name">=&gt;</span> a <span class="org-variable-name">-&gt;</span> f <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Valid</span> v a<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-function-name">validate</span> a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> <span class="org-variable-name">&lt;$&gt;</span> validator <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Proxy</span> <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v<span class="org-rainbow-delimiters-depth-1">)</span> a
+<pre class="src src-purescript" id="orgsrcblock3"><span class="org-function-name">validate</span> <span class="org-variable-name">::</span> <span class="org-variable-name">&#8704;</span> v f a<span class="org-variable-name">.</span> (<span class="org-type">Validator</span> v f a, <span class="org-type">Functor</span> f) <span class="org-variable-name">=&gt;</span> a <span class="org-variable-name">-&gt;</span> f (<span class="org-type">Valid</span> v a)
+<span class="org-function-name">validate</span> a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> <span class="org-variable-name">&lt;$&gt;</span> validator (<span class="org-type">Proxy</span> <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v) a
 </pre>
 </div>
 <p>
-It constrains <code>Validator~’s ~f</code> to be a <code>Functor</code> so the <code>MkValid</code> constructor
-function can be mapped over the result of <code>validator</code>.
+It constrains <code>f</code> to be a <code>Functor</code> so the <code>MkValid</code> constructor function can be
+mapped over the result of <code>validator</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5">Complete module</h4>
-<div class="outline-text-4" id="text-orgheadline5">
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">Complete module</h4>
+<div class="outline-text-4" id="text-orgheadline12">
 <p>
 Here it is as a <a href="https://github.com/gettyped/gettyped/purescript/src/GetTyped/Valid.purs">complete module</a>.
 </p>
 <div class="org-src-container">
 
 <pre class="src src-purescript"><span class="org-keyword">module</span> <span class="org-type">GetTyped.Valid</span>
-  <span class="org-rainbow-delimiters-depth-1">(</span> <span class="org-keyword">class</span> <span class="org-type">Validator</span>
+  ( <span class="org-keyword">class</span> <span class="org-type">Validator</span>
   , validator
   , <span class="org-type">Valid</span>
   , validate
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+  )
 <span class="org-keyword">where</span>
 
-<span class="org-keyword">import</span> <span class="org-type">Prelude</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">&lt;$&gt;</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-keyword">import</span> <span class="org-type">Type.Proxy</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">Proxy</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">..</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-keyword">import</span> <span class="org-type">Prelude</span> (<span class="org-variable-name">&lt;$&gt;</span>)
+<span class="org-keyword">import</span> <span class="org-type">Type.Proxy</span> (<span class="org-type">Proxy</span>(<span class="org-variable-name">..</span>))
 
-<span class="org-variable-name">&lt;&lt;</span>valid<span class="org-variable-name">-</span><span class="org-keyword">type</span><span class="org-variable-name">&gt;&gt;</span>
+<span class="org-keyword">newtype</span> <span class="org-type">Valid</span> v a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> a
 
-<span class="org-variable-name">&lt;&lt;</span>validator<span class="org-variable-name">-</span><span class="org-keyword">class</span><span class="org-variable-name">&gt;&gt;</span>
+<span class="org-keyword">class</span> <span class="org-type">Validator</span> v f a <span class="org-keyword">where</span>
+  validator <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v <span class="org-variable-name">-&gt;</span> a <span class="org-variable-name">-&gt;</span> f a
 
-<span class="org-variable-name">&lt;&lt;</span>validate<span class="org-variable-name">-</span>function<span class="org-variable-name">&gt;&gt;</span>
+<span class="org-function-name">validate</span> <span class="org-variable-name">::</span> <span class="org-variable-name">&#8704;</span> v f a<span class="org-variable-name">.</span> (<span class="org-type">Validator</span> v f a, <span class="org-type">Functor</span> f) <span class="org-variable-name">=&gt;</span> a <span class="org-variable-name">-&gt;</span> f (<span class="org-type">Valid</span> v a)
+<span class="org-function-name">validate</span> a <span class="org-variable-name">=</span> <span class="org-type">MkValid</span> <span class="org-variable-name">&lt;$&gt;</span> validator (<span class="org-type">Proxy</span> <span class="org-variable-name">::</span> <span class="org-type">Proxy</span> v) a
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">Flow implementation</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">Flow implementation</h3>
+<div class="outline-text-3" id="text-orgheadline14">
 <div class="org-src-container">
 
 <pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">@flow</span>
 
-<span class="org-keyword">export</span> <span class="org-keyword">class</span> Valid&lt;V, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-keyword">export</span> <span class="org-keyword">class</span> Valid&lt;V, A&gt; {
     value: A;
 
-    constructor<span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    constructor(a: A) {
         <span class="org-constant">this</span>.value = a;
-    <span class="org-rainbow-delimiters-depth-2">}</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+    }
+}
 
-<span class="org-keyword">function</span> <span class="org-function-name">mkValid</span>&lt;V, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>a: A<span class="org-rainbow-delimiters-depth-1">)</span>: Valid&lt;V, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-keyword">new</span> <span class="org-type">Valid</span><span class="org-rainbow-delimiters-depth-2">(</span>a<span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">function</span> <span class="org-function-name">mkValid</span>&lt;V, A&gt;(a: A): Valid&lt;V, A&gt; {
+    <span class="org-keyword">return</span> <span class="org-keyword">new</span> <span class="org-type">Valid</span>(a);
+}
 
-<span class="org-keyword">export</span> type Success&lt;A&gt; = <span class="org-rainbow-delimiters-depth-1">{</span>tag: <span class="org-string">"success"</span>, value: A<span class="org-rainbow-delimiters-depth-1">}</span>;
-<span class="org-keyword">export</span> type Failure&lt;E&gt; = <span class="org-rainbow-delimiters-depth-1">{</span>tag: <span class="org-string">"failure"</span>, errors: <span class="org-rainbow-delimiters-depth-2">[</span>E<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="org-keyword">export</span> type Success&lt;A&gt; = {tag: <span class="org-string">"success"</span>, value: A};
+<span class="org-keyword">export</span> type Failure&lt;E&gt; = {tag: <span class="org-string">"failure"</span>, errors: [E]};
 <span class="org-keyword">export</span> type Validation&lt;E, A&gt; = Success&lt;A&gt; | Failure&lt;E&gt;;
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> success&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>a: A<span class="org-rainbow-delimiters-depth-1">)</span>: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">{</span>tag: <span class="org-string">"success"</span>, value: a<span class="org-rainbow-delimiters-depth-2">}</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> success&lt;E, A&gt;(a: A): Validation&lt;E, A&gt; {
+    <span class="org-keyword">return</span> {tag: <span class="org-string">"success"</span>, value: a};
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> failure&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>errs: <span class="org-rainbow-delimiters-depth-2">[</span>E<span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">{</span>tag: <span class="org-string">"failure"</span>, errors: errs<span class="org-rainbow-delimiters-depth-2">}</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> failure&lt;E, A&gt;(errs: [E]): Validation&lt;E, A&gt; {
+    <span class="org-keyword">return</span> {tag: <span class="org-string">"failure"</span>, errors: errs};
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> validationErrors&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>v: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>: <span class="org-rainbow-delimiters-depth-1">[</span>E<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>v.tag === <span class="org-string">"failure"</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> validationErrors&lt;E, A&gt;(v: Validation&lt;E, A&gt;): [E] {
+    <span class="org-keyword">return</span> (v.tag === <span class="org-string">"failure"</span>
             ? v.errors
-            : <span class="org-rainbow-delimiters-depth-3">[]</span><span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+            : []);
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> mapValidation&lt;E, A, B&gt;<span class="org-rainbow-delimiters-depth-1">(</span>f: <span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span> =&gt; B, v: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>
-: Validation&lt;E, B&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>v.tag === <span class="org-string">"failure"</span>
-            ? <span class="org-rainbow-delimiters-depth-3">{</span>tag: <span class="org-string">"failure"</span>, errors: v.errors<span class="org-rainbow-delimiters-depth-3">}</span>
-            : <span class="org-rainbow-delimiters-depth-3">{</span>tag: <span class="org-string">"success"</span>, value: f<span class="org-rainbow-delimiters-depth-4">(</span>v.value<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> mapValidation&lt;E, A, B&gt;(f: (a: A) =&gt; B, v: Validation&lt;E, A&gt;)
+: Validation&lt;E, B&gt; {
+    <span class="org-keyword">return</span> (v.tag === <span class="org-string">"failure"</span>
+            ? {tag: <span class="org-string">"failure"</span>, errors: v.errors}
+            : {tag: <span class="org-string">"success"</span>, value: f(v.value)});
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> takeLeftValidation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">(</span>l: Validation&lt;E, A&gt;, r: Validation&lt;E, A&gt;<span class="org-rainbow-delimiters-depth-1">)</span>
-: Validation&lt;E, A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-2">(</span>l.tag === <span class="org-string">"failure"</span> || r.tag === <span class="org-string">"failure"</span>
-            ? failure<span class="org-rainbow-delimiters-depth-3">(</span>validationErrors<span class="org-rainbow-delimiters-depth-4">(</span>l<span class="org-rainbow-delimiters-depth-4">)</span>.concat<span class="org-rainbow-delimiters-depth-4">(</span>validationErrors<span class="org-rainbow-delimiters-depth-5">(</span>r<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-            : l<span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> takeLeftValidation&lt;E, A&gt;(l: Validation&lt;E, A&gt;, r: Validation&lt;E, A&gt;)
+: Validation&lt;E, A&gt; {
+    <span class="org-keyword">return</span> (l.tag === <span class="org-string">"failure"</span> || r.tag === <span class="org-string">"failure"</span>
+            ? failure(validationErrors(l).concat(validationErrors(r)))
+            : l);
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">interface</span> Validator&lt;A&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    validator<span class="org-rainbow-delimiters-depth-2">(</span>a: A<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, A&gt;;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">interface</span> Validator&lt;A&gt; {
+    validator(a: A): Validation&lt;Error, A&gt;;
+}
 
-<span class="org-keyword">export</span> <span class="org-keyword">function</span> validate&lt;A, V: Validator&lt;A&gt;&gt;<span class="org-rainbow-delimiters-depth-1">(</span>v: V, a: A<span class="org-rainbow-delimiters-depth-1">)</span>
-: Validation&lt;Error, Valid&lt;V, A&gt;&gt; <span class="org-rainbow-delimiters-depth-1">{</span>
-    <span class="org-keyword">return</span> mapValidation<span class="org-rainbow-delimiters-depth-2">(</span>mkValid, v.validator<span class="org-rainbow-delimiters-depth-3">(</span>a<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">export</span> <span class="org-keyword">function</span> validate&lt;A, V: Validator&lt;A&gt;&gt;(v: V, a: A)
+: Validation&lt;Error, Valid&lt;V, A&gt;&gt; {
+    <span class="org-keyword">return</span> mapValidation(mkValid, v.validator(a));
+}
 
-<span class="org-keyword">class</span> Integer <span class="org-rainbow-delimiters-depth-1">{</span>
-    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
-        <span class="org-keyword">return</span> x % <span class="org-highlight-numbers-number">1</span> === <span class="org-highlight-numbers-number">0</span> ? success<span class="org-rainbow-delimiters-depth-3">(</span>x<span class="org-rainbow-delimiters-depth-3">)</span> : failure<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-5">(</span><span class="org-string">"floating"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>;
-    <span class="org-rainbow-delimiters-depth-2">}</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">class</span> Integer {
+    validator(x: number): Validation&lt;Error, number&gt; {
+        <span class="org-keyword">return</span> x % 1 === 0 ? success(x) : failure([<span class="org-keyword">new</span> <span class="org-type">Error</span>(<span class="org-string">"floating"</span>)]);
+    }
+}
 
-<span class="org-keyword">class</span> Natural <span class="org-rainbow-delimiters-depth-1">{</span>
-    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
-        <span class="org-keyword">return</span> takeLeftValidation<span class="org-rainbow-delimiters-depth-3">(</span>
-            <span class="org-keyword">new</span> <span class="org-type">Integer</span><span class="org-rainbow-delimiters-depth-4">()</span>.validator<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span>,
-            x &gt; <span class="org-highlight-numbers-number">0</span> ? success<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span> : failure<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-string">"&lt;= 0"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
-    <span class="org-rainbow-delimiters-depth-2">}</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">class</span> Natural {
+    validator(x: number): Validation&lt;Error, number&gt; {
+        <span class="org-keyword">return</span> takeLeftValidation(
+            <span class="org-keyword">new</span> <span class="org-type">Integer</span>().validator(x),
+            x &gt; 0 ? success(x) : failure([<span class="org-keyword">new</span> <span class="org-type">Error</span>(<span class="org-string">"&lt;= 0"</span>)]));
+    }
+}
 
-<span class="org-keyword">class</span> Negative <span class="org-rainbow-delimiters-depth-1">{</span>
-    validator<span class="org-rainbow-delimiters-depth-2">(</span>x: number<span class="org-rainbow-delimiters-depth-2">)</span>: Validation&lt;Error, number&gt; <span class="org-rainbow-delimiters-depth-2">{</span>
-        <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-3">(</span>x &gt; <span class="org-highlight-numbers-number">0</span>
-                ? success<span class="org-rainbow-delimiters-depth-4">(</span>x<span class="org-rainbow-delimiters-depth-4">)</span>
-                : failure<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="org-keyword">new</span> <span class="org-type">Error</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-string">"Not negative"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">]</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>;
-    <span class="org-rainbow-delimiters-depth-2">}</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="org-keyword">class</span> Negative {
+    validator(x: number): Validation&lt;Error, number&gt; {
+        <span class="org-keyword">return</span> (x &gt; 0
+                ? success(x)
+                : failure([<span class="org-keyword">new</span> <span class="org-type">Error</span>(<span class="org-string">"Not negative"</span>)]));
+    }
+}
 
-<span class="org-keyword">function</span> <span class="org-function-name">addNats</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">x</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;, <span class="org-variable-name">y</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;<span class="org-rainbow-delimiters-depth-1">)</span>: <span class="org-variable-name">number</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-keyword">function</span> <span class="org-function-name">addNats</span>(<span class="org-variable-name">x</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;, <span class="org-variable-name">y</span>: <span class="org-variable-name">Valid</span>&lt;<span class="org-variable-name">Natural</span>, <span class="org-variable-name">number</span>&gt;): <span class="org-variable-name">number</span> {
     <span class="org-keyword">return</span> x.value + y.value;
-<span class="org-rainbow-delimiters-depth-1">}</span>
+}
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">Static guarantees</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-</div><div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">Statically guaranteed validity</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18">Static guarantees</h2>
+<div class="outline-text-2" id="text-orgheadline18">
+</div><div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">Statically guaranteed validity</h3>
+<div class="outline-text-3" id="text-orgheadline16">
 <p>
 With <code>Valid</code> it is possible to ensure at compile-time that a function argument
 is valid according to a specific <code>Validator</code>.
@@ -547,15 +456,15 @@ This would look something like:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-function-name">map</span> usernameHash <span class="org-rainbow-delimiters-depth-1">(</span>validate usernameString<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-variable-name">::</span> <span class="org-type">Maybe</span> <span class="org-type">Int</span>
+<pre class="src src-purescript"><span class="org-function-name">map</span> usernameHash (validate usernameString) <span class="org-variable-name">::</span> <span class="org-type">Maybe</span> <span class="org-type">Int</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">Statically guaranteed invalid result handling</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17">Statically guaranteed invalid result handling</h3>
+<div class="outline-text-3" id="text-orgheadline17">
 <p>
 In a language with higher kinds, a <code>Validator</code> can be written to use whichever
 result handling makes most sense by using an appropriate type constructor for
