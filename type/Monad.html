@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-07 Sun 23:09 -->
+<!-- 2016-08-07 Sun 23:22 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Monad</title>
@@ -24,8 +24,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline11">Abstraction</a></li>
-<li><a href="#orgheadline12">Example</a></li>
+<li><a href="#orgheadline12">Abstraction</a></li>
+<li><a href="#orgheadline13">Example</a></li>
 </ul>
 </div>
 </nav>
@@ -63,17 +63,21 @@
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+<h3 id="orgheadline8"><a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><a href="/type/Monad.html">Monads</a></h3>
+<h3 id="orgheadline9"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><a href="/type/Monad.html">Monads</a></h3>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2 hide">
-<h2 id="orgheadline10">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
-<div class="outline-text-2" id="text-orgheadline10">
+<div id="outline-container-orgheadline11" class="outline-2 hide">
+<h2 id="orgheadline11">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline11">
 <div class="MOTIVATION">
 <ul class="org-ul">
 <li>Restrict evaluation to a type constructor context</li>
@@ -88,9 +92,9 @@ A Monad is an abstraction for <a href="type-constructor.html">type constructors<
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">Abstraction</h2>
-<div class="outline-text-2" id="text-orgheadline11">
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Abstraction</h2>
+<div class="outline-text-2" id="text-orgheadline12">
 <dl class="org-dl">
 <dt><code>pure :: a -&gt; m a</code></dt><dd>Wrap a value in the monad type <code>m</code>.</dd>
 <dt><code>map :: (a -&gt; b) -&gt; m a -&gt; m b</code></dt><dd>Map a function across a monad value.</dd>
@@ -99,9 +103,9 @@ A Monad is an abstraction for <a href="type-constructor.html">type constructors<
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">Example</h2>
-<div class="outline-text-2" id="text-orgheadline12">
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">Example</h2>
+<div class="outline-text-2" id="text-orgheadline13">
 <p>
 The simplest monad instance is the one for <code>Identity</code>.
 </p>

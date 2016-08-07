@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-08-07 Sun 23:23 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>type : Eff</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Jeremy Hughes">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="/_static/main.css">
+<link rel="stylesheet" type="text/css" href="/_static/htmlize.css"/>
+<script src="/_static/main.js"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content">
+<header>
+<h1 class="title">type : Eff</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline12">Example</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+</div>
+<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
+<h3 id="orgheadline2">Motivations</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3 branch-type">
+<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3 branch-example">
+<h3 id="orgheadline4">Examples</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
+<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><a href="/type/Monad.html">Monads</a></h3>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2 hide">
+<h2 id="orgheadline11">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline11">
+<div class="MOTIVATION">
+<ul class="org-ul">
+<li>Track effects in types</li>
+<li>Interleave different types of effects</li>
+<li>Restrict sections of code to a set of effects</li>
+</ul>
+
+</div>
+
+<p>
+In most languages you can write procedures that perform side-effects: reading
+and writing files, mutating variables, querying databases, etc. <code>Eff</code> tracks
+these effects at the type-level. This means that looking at a function's
+type-signature is enough to determine whether it or any functions it
+transitively calls performs a given type of effect.
+</p>
+
+<dl class="org-dl">
+<dt><code>Eff e a</code></dt><dd>The type of an effectful computation which (might) perform effects of type
+<code>e</code> and returns a result of type <code>a</code> when run.</dd>
+
+<dt><code>unsafePerformEffects :: Eff e a -&gt; a</code></dt><dd>Run an effectful computation, returning its result. “Unsafe” because
+doing so removes all type-level effect information. Best used only in a
+program’s entry-points.</dd>
+
+<dt><code>interleave :: Eff e0 a -&gt; Eff e a</code></dt><dd><p>
+     Interleave effects. In some languages this function is unnecessary due to
+<code>a</code> being a row-type (Purescript).
+</p>
+
+<p>
+In other languages (like C#), interleaving of effects requires that the
+effects be in a subtyping hierarchy and that the <code>interleave</code> function
+has an <code>e : e0</code> constraint.
+</p></dd>
+</dl>
+
+<p>
+Except for <code>unsafePerformEffects</code>, effectful computations cannot escape the <code>Eff
+e</code> context because the only way to interact with an <code>Eff e</code> context is through
+its <a href="Monad.html">Monad</a> instance and the <code>interleave</code> function.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Example</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+<p>
+Imagine writing a function which for performance or security reasons must not
+touch the file system, but does output to the console and read from a cache.
+This function undoubtedly calls other functions which you do not have direct
+control of, or which someone else will some day modify. How can you ensure that
+your function never touches the file-system? Without somethig like <code>Eff</code>, you
+have to rely on recursively reading the code of the functions your function
+calls, communicating your expectations, and running tests, none of which will
+reliably catch a filesystem access many calls below yours.
+</p>
+
+<p>
+If however, your function and the functions it calls use <code>Eff</code>, the compiler
+will do all the checking for you.
+</p>
+
+<p>
+For example,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp"><span class="org-type">Eff</span>&lt;E, B&gt; <span class="org-function-name">noFilesystemAccess</span>(<span class="org-type">A</span> <span class="org-variable-name">a</span>) <span class="org-keyword">where</span> e : ConsoleEff, CacheEff;
+
+<span class="org-type">Eff</span>&lt;E, <span class="org-type">A</span>&gt; <span class="org-function-name">func0</span>() <span class="org-keyword">where</span> e : ConsoleEff;
+
+<span class="org-type">Eff</span>&lt;E, <span class="org-type">A</span>&gt; <span class="org-function-name">func1</span>() <span class="org-keyword">where</span> e : ConsoleEff, FilesystemEff
+</pre>
+</div>
+
+<p>
+if <code>noFilesystemAccess</code> were written such that it transitively called
+<code>func0</code>, assuming no other errors it would compile because <code>ConsoleEff</code>
+can interleave into <code>ConsoleEff, CacheEff</code>. If the definition of <code>func0</code>
+were changed to <code>func1</code>, compilation would fail because <code>FilesystemEff</code>
+cannot interleave with <code>ConsoleEff, CacheEff</code>.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
