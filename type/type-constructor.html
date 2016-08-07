@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-08-07 Sun 23:05 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>type : Type Constructor</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Jeremy Hughes">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="/_static/main.css">
+<link rel="stylesheet" type="text/css" href="/_static/htmlize.css"/>
+<script src="/_static/main.js"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content">
+<header>
+<h1 class="title">type : Type Constructor</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline11">Example</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+</div>
+<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
+<h3 id="orgheadline2">Motivations</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3 branch-type">
+<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3 branch-example">
+<h3 id="orgheadline4">Examples</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
+<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><a href="/type/Monad.html">Monads</a></h3>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2 hide">
+<h2 id="orgheadline10">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<div class="MOTIVATION">
+<ul class="org-ul">
+<li>Allow more general abstraction</li>
+<li>Reduce repetition</li>
+</ul>
+
+</div>
+
+<p>
+A value constructor is a value that takes other value(s) and returns a value,
+(<code>a -&gt; b</code>). A type constructor is a type that takes other type(s) to make a
+type, (<code>* -&gt; *</code>).
+</p>
+
+<p>
+In the type, <code>List Int</code>, <code>List</code> is a type constructor that takes another type,
+<code>Int</code>, to produce the type, <code>List Int</code>. <code>Map String Int</code> is another.
+</p>
+
+<p>
+Types that take type parameters are <i>higher kinded</i>. Values like <code>Int</code> and <code>List
+Int</code> have kind <code>*</code>. The <code>List</code> type constructor has kind <code>* -&gt; *</code>; the <code>Map</code>
+type construtor takes two type parameters so it has kind <code>* -&gt; * -&gt; *</code>.
+</p>
+
+<p>
+Most languages have type systems that do not treat type constructors as first
+class types. They can abstract over types of kind <code>*</code> but not <code>* -&gt; *</code> and
+above.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">Example</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+<p>
+A trivial example is C#. In C# you can write an equality abstraction for types
+of kind <code>*</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp"><span class="org-keyword">interface</span> <span class="org-type">Eq</span>&lt;A&gt;
+{
+    <span class="org-type">bool</span> <span class="org-function-name">Equal</span>(<span class="org-type">A</span> <span class="org-variable-name">x</span>, <span class="org-type">A</span> <span class="org-variable-name">y</span>);
+}
+</pre>
+</div>
+
+<p>
+In C# you cannot write a functor abstraction for types of kind <code>* -&gt; *</code>. (An
+abstraction for all types that can implement Linq’s <code>Select</code> function.)
+</p>
+
+<p>
+If you could it would look like this,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp" id="orgsrcblock1"><span class="org-keyword">interface</span> <span class="org-type">Functor</span>&lt;F&gt;
+{
+    <span class="org-type">F</span>&lt;B&gt; <span class="org-type">Map</span>&lt;A, B&gt;(<span class="org-type">Func</span>&lt;A, B&gt; <span class="org-variable-name">f</span>, <span class="org-type">F</span>&lt;A&gt; <span class="org-variable-name">fa</span>);
+}
+</pre>
+</div>
+
+<p>
+but this is not legal C# code because <code>F</code> cannot be used without applied type
+parameters.
+</p>
+
+<p>
+This is why .NET has no Linq interface and instead relies on baked-in compile
+time resolution of the “special” function signatures of <code>Select</code> and
+<code>SelectMany</code>.
+</p>
+
+<p>
+Here is what a set of Linq interfaces might look like were higher kinded types
+representable in C#:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp"><span class="org-keyword">interface</span> <span class="org-type">Functor</span>&lt;F&gt;
+{
+    <span class="org-type">F</span>&lt;B&gt; <span class="org-type">Map</span>&lt;A, B&gt;(<span class="org-type">Func</span>&lt;A, B&gt; <span class="org-variable-name">f</span>, <span class="org-type">F</span>&lt;A&gt; <span class="org-variable-name">fa</span>);
+}
+
+<span class="org-keyword">interface</span> <span class="org-type">Apply</span>&lt;F&gt;
+  : <span class="org-type">Functor</span>&lt;F&gt;
+{
+    <span class="org-type">F</span>&lt;B&gt; <span class="org-type">Ap</span>&lt;A, B&gt;(<span class="org-type">F</span>&lt;<span class="org-type">Func</span>&lt;A, B&gt;&gt; <span class="org-variable-name">f</span>, <span class="org-type">F</span>&lt;A&gt; <span class="org-variable-name">fa</span>);
+}
+
+<span class="org-keyword">interface</span> <span class="org-type">Applicative</span>&lt;F&gt;
+  : <span class="org-type">Apply</span>&lt;F&gt;
+{
+    <span class="org-type">F</span>&lt;A&gt; <span class="org-type">Pure</span>&lt;A&gt;(<span class="org-type">A</span> <span class="org-variable-name">a</span>);
+}
+
+<span class="org-keyword">interface</span> <span class="org-type">Bind</span>&lt;F&gt;
+  : <span class="org-type">Apply</span>&lt;F&gt;
+{
+    <span class="org-type">F</span>&lt;B&gt; <span class="org-type">FlatMap</span>&lt;<span class="org-type">A</span>, B&gt;(<span class="org-type">Func</span>&lt;<span class="org-type">A</span>, B&gt; <span class="org-variable-name">f</span>, <span class="org-type">F</span>&lt;<span class="org-type">A</span>&gt; <span class="org-variable-name">fa</span>);
+}
+
+<span class="org-keyword">interface</span> <span class="org-type">Monad</span>&lt;F&gt;
+  : <span class="org-type">Bind</span>&lt;F&gt;
+  , <span class="org-type">Applicative</span>&lt;F&gt;
+{
+}
+</pre>
+</div>
+
+<p>
+They could be implemented by appropriate types of kind <code>* -&gt; *</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp"><span class="org-keyword">static</span> <span class="org-type">unique</span> <span class="org-type">Monad</span>&lt;IEnumerable&gt;
+{
+    <span class="org-type">IEnumerable</span>&lt;A&gt; <span class="org-type">Pure</span>&lt;A&gt;(<span class="org-type">A</span> <span class="org-variable-name">a</span>)
+    =&gt;  Enumerable.Repeat(1, a);
+
+    <span class="org-type">IEnumerable</span>&lt;B&gt; <span class="org-type">Map</span>&lt;<span class="org-type">A</span>, B&gt;(<span class="org-type">Func</span>&lt;<span class="org-type">A</span>, B&gt; <span class="org-variable-name">f</span>, <span class="org-type">IEnumerable</span>&lt;<span class="org-type">A</span>&gt; <span class="org-variable-name">fa</span>)
+    {   <span class="org-keyword">foreach</span> (<span class="org-keyword">var</span> <span class="org-variable-name">a</span> <span class="org-keyword">in</span> fa)
+        {   <span class="org-keyword">yield</span> <span class="org-keyword">return</span> f(a);
+        }
+    }
+
+    <span class="org-type">IEnumerable</span>&lt;B&gt; <span class="org-type">FlatMap</span>&lt;<span class="org-type">A</span>, B&gt;(<span class="org-type">Func</span>&lt;<span class="org-type">A</span>, <span class="org-type">IEnumerable</span>&lt;B&gt;&gt; <span class="org-variable-name">f</span>, <span class="org-type">IEnumerable</span>&lt;<span class="org-type">A</span>&gt; <span class="org-variable-name">fa</span>)
+    =&gt;  Enumerable.Concat(Map(f, fa));
+
+    <span class="org-type">IEnumerable</span>&lt;B&gt; <span class="org-type">Ap</span>&lt;<span class="org-type">A</span>, B&gt;(<span class="org-type">IEnumerable</span>&lt;<span class="org-type">Func</span>&lt;<span class="org-type">A</span>, B&gt;&gt; <span class="org-variable-name">ff</span>, <span class="org-type">IEnumerable</span>&lt;<span class="org-type">A</span>&gt; <span class="org-variable-name">fa</span>)
+    =&gt;  FlatMap(f =&gt; Map(a =&gt; f(a), fa), ff)
+}
+</pre>
+</div>
+
+<p>
+And functions could be written once for all “Linqable” types.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-csharp"><span class="org-keyword">static</span> <span class="org-type">singleton</span> <span class="org-variable-name">ApplicativeExtensions</span>
+{
+    <span class="org-type">F</span>&lt;A&gt; <span class="org-type">Join</span>&lt;A&gt;(<span class="org-type">F</span>&lt;<span class="org-type">F</span>&lt;A&gt;&gt; <span class="org-variable-name">ffa</span>)
+      <span class="org-keyword">where</span> unique <span class="org-type">Applicative</span>&lt;F&gt;
+    =&gt;  FlatMap(x =&gt; x, ffa);
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

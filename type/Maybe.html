@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-08-07 Sun 23:05 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>type : Maybe</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Jeremy Hughes">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="/_static/main.css">
+<link rel="stylesheet" type="text/css" href="/_static/htmlize.css"/>
+<script src="/_static/main.js"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content">
+<header>
+<h1 class="title">type : Maybe</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline11">API</a></li>
+<li><a href="#orgheadline12">Maybe vs null checks</a></li>
+<li><a href="#orgheadline13">Smart constructors and invariants</a></li>
+<li><a href="#orgheadline14">Links</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+</div>
+<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
+<h3 id="orgheadline2">Motivations</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3 branch-type">
+<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3 branch-example">
+<h3 id="orgheadline4">Examples</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
+<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><a href="/type/Monad.html">Monads</a></h3>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2 hide">
+<h2 id="orgheadline10">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<div class="MOTIVATION">
+<ul class="org-ul">
+<li>Handle optional values without guessing and without exceptions</li>
+<li>Maintain type invariants in smart constructors</li>
+</ul>
+
+</div>
+
+<p>
+<code>Maybe</code> guarantees exception free and guess free optional value handling by
+providing only one function for getting at the optional value, a function that
+requires function arguments that handle both present and absent states.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">API</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+<dl class="org-dl">
+<dt><code>Maybe a</code></dt><dd>A type that either contains a value or doesn’t. Usually implemented as a
+sum type with nullary and 1-ary constructors.</dd>
+<dt><code>nothing :: Maybe a</code> and <code>just :: a -&gt; Maybe a</code></dt><dd>The two constructors.</dd>
+<dt><code>foldMaybe :: b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b</code></dt><dd>Fold over the two possible states.</dd>
+</dl>
+
+<p>
+There is no way to dereference the Maybe-wrapped value directly. The compiler
+ensures that the <code>nothing</code> case is handled.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Maybe vs null checks</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+<p>
+Assuming the following values:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-function-name">absent</span> <span class="org-variable-name">::</span> b
+<span class="org-function-name">present</span> <span class="org-variable-name">::</span> a <span class="org-variable-name">-&gt;</span> b
+</pre>
+</div>
+
+<p>
+A typical null-check,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-keyword">if</span> a <span class="org-variable-name">==</span> null <span class="org-keyword">then</span> absent <span class="org-keyword">else</span> present a
+</pre>
+</div>
+
+<p>
+exhibits a lack of type safety in two ways:
+</p>
+
+<dl class="org-dl">
+<dt>assumption</dt><dd>The programmer assumes <code>a</code> is not <code>null</code> and doesn’t write the null check.</dd>
+<dt>boolean blindness</dt><dd><p>
+     The compiler doesn’t stop accidental dereferencing, as in this
+transposition:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-keyword">if</span> a <span class="org-variable-name">==</span> null <span class="org-keyword">then</span> present a <span class="org-keyword">else</span> absent
+</pre>
+</div></dd>
+</dl>
+
+<p>
+Boolean blindness is <a href="https://existentialtype.wordpress.com/2011/03/15/boolean-blindness/">well described by Robert Harper</a>. Here’s the money quote:
+</p>
+
+<blockquote>
+<p>
+Another harm is the condition of Boolean blindness alluded to earlier. Suppose
+that I evaluate the expression e=e’ to test whether e and e’ are equal. I have
+in my hand a bit. The bit itself has no intrinsic meaning; I must associate a
+provenance with that bit in order to give it meaning. “This bit being true
+means that e and e’ are equal, whereas this other bit being false means that
+some other two expressions are not equal.” Keeping track of this information
+(or attempting to recover it using any number of program analysis techniques) is
+notoriously difficult. The only thing you can do with a bit is to branch on it,
+and pretty soon you’re lost in a thicket of if-the-else’s, and you lose track
+of what’s what. Evolve the program a little, and you’re soon out to sea, and
+find yourself in need of sat solvers to figure out what the hell is going on.
+</p>
+</blockquote>
+
+<p>
+<code>Maybe</code> solves both issues.
+</p>
+
+<dl class="org-dl">
+<dt>assumption</dt><dd>The programmer cannot get at the value of a <code>Maybe</code> without going through
+<code>foldMaybe</code>.</dd>
+<dt>boolean blindness</dt><dd><p>
+     <code>foldMayb</code> provides a value only to the <code>just</code> case:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-function-name">foldMaybe</span> absent present a
+</pre>
+</div>
+<p>
+An accidental transposition results in a compile time error:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-purescript"><span class="org-function-name">foldMaybe</span> present absent a
+<span class="org-comment-delimiter">-- </span><span class="org-comment">error: expected arg types: b     , a -&gt; b, Maybe a</span>
+<span class="org-comment-delimiter">--                       </span><span class="org-comment">got: a -&gt; b, b     , Maybe a</span>
+</pre>
+</div></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">Smart constructors and invariants</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+<p>
+<code>Maybe</code> can be used to enforce a type’s invariants. A trivial example is a type
+for integers greater than zero.
+</p>
+
+<dl class="org-dl">
+<dt><code>Natural</code></dt><dd>The type of integers <code>&gt; 0</code>.</dd>
+<dt><code>natural :: Int -&gt; Maybe Natural</code></dt><dd>The only constructor for <code>Natural</code> values. It returns <code>nothing</code> if its
+input is <code>&lt; 1</code>. This creates a compile time guarantee that <code>Natural</code> values
+will always be <code>&gt; 0</code>.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14">Links</h2>
+<div class="outline-text-2" id="text-orgheadline14">
+<ul class="org-ul">
+<li><a href="https://wiki.haskell.org/Maybe">Haskell’s Maybe</a></li>
+<li><a href="https://doc.rust-lang.org/std/option/">Rust’s option</a></li>
+<li><a href="https://fsharpforfunandprofit.com/posts/the-option-type/">F#’s Option</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Option_type">Wikipedia on Option types</a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>
