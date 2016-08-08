@@ -400,7 +400,7 @@ body {
 .branch-navigation {
     position: absolute;
     left: 24px;
-    top: 92px;
+    top: 72px;
     width: 250px;
     height: 100%;
     color: whitesmoke;
@@ -503,6 +503,10 @@ h1.title {
     background: #b8dcf1;
 }
 
+.listing {
+    position: relative;
+}
+
 .listing .MOTIVATION {
     margin: 0;
     padding: 0;
@@ -513,9 +517,24 @@ h1.title {
     display: none;
 }
 
+.listing .MOTIVATION li {
+    list-style: inside disc;
+}
+
 .listing h3 {
-    padding: 0;
-    margin: 0;
+    font-size: 1.5rem;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.listing h3 i {
+    font-style: normal;
+    font-weight: normal;
+    display: block;
+}
+
+.listing h3 i:before {
+    content: '—';
 }
 
 .listing h3 a {
