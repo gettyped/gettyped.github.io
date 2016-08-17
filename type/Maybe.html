@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-17 Wed 16:32 -->
+<!-- 2016-08-17 Wed 16:33 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -110,7 +110,7 @@ ensures that the <code>nothing</code> case is handled.
 <div class="org-src-container">
 
 <pre class="src src-scala" id="orgsrcblock1"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
-  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>(b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-constant">Maybe</span>.fold(b, f, <span class="org-keyword">this</span>)
+  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-constant">Maybe</span>.fold(b, f, <span class="org-keyword">this</span>)
 }
 
 <span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
