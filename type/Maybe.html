@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-17 Wed 16:50 -->
+<!-- 2016-08-17 Wed 16:51 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -127,32 +127,6 @@ ensures that the <code>nothing</code> case is handled.
       <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
       <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
     }
-}
-</pre>
-</div>
-
-<div class="org-src-container">
-
-<pre class="src src-scala"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
-  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-constant">Maybe</span>.fold(b, f, <span class="org-keyword">this</span>)
-}
-
-<span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Nothing</span>[<span class="org-constant">A</span>]() <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
-
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Just</span>[<span class="org-constant">A</span>](value<span class="org-keyword">:</span> <span class="org-type">A</span>) <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
-
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">A</span>, <span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, ma<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>])<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span>
-    ma <span class="org-keyword">match</span> {
-      <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
-      <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
-    }
-}
-
-<span class="org-keyword">object</span> <span class="org-constant">ScalaJSExample</span> {
-  <span class="org-keyword">def</span> <span class="org-function-name">main</span>()<span class="org-keyword">:</span> <span class="org-type">Unit</span> <span class="org-keyword">=</span> {
-    println(<span class="org-string">"Compile success"</span>)
-  }
 }
 </pre>
 </div>
