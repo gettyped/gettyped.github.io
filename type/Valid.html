@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-07 Sun 23:22 -->
+<!-- 2016-08-17 Wed 16:22 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Valid</title>
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Jeremy Hughes">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
-<link rel="stylesheet" type="text/css" href="/_static/main.css">
-<link rel="stylesheet" type="text/css" href="/_static/htmlize.css"/>
-<script src="/_static/main.js"></script>
 </head>
 <body>
 <div id="org-div-home-and-up">
@@ -24,78 +20,78 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline12">Correct by construction</a></li>
-<li><a href="#orgheadline19">Implementations</a>
+<li><a href="#orgheadline12">4. Correct by construction</a></li>
+<li><a href="#orgheadline19">5. Implementations</a>
 <ul>
-<li><a href="#orgheadline17">Purescript implementation</a>
+<li><a href="#orgheadline17">5.1. Purescript implementation</a>
 <ul>
-<li><a href="#orgheadline13">Valid type</a></li>
-<li><a href="#orgheadline14">Validator class</a></li>
-<li><a href="#orgheadline15">Validate function</a></li>
-<li><a href="#orgheadline16">Complete module</a></li>
+<li><a href="#orgheadline13">5.1.1. Valid type</a></li>
+<li><a href="#orgheadline14">5.1.2. Validator class</a></li>
+<li><a href="#orgheadline15">5.1.3. Validate function</a></li>
+<li><a href="#orgheadline16">5.1.4. Complete module</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline18">Flow implementation</a></li>
+<li><a href="#orgheadline18">5.2. Flow implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline22">Static guarantees</a>
+<li><a href="#orgheadline22">6. Static guarantees</a>
 <ul>
-<li><a href="#orgheadline20">Statically guaranteed validity</a></li>
-<li><a href="#orgheadline21">Statically guaranteed invalid result handling</a></li>
+<li><a href="#orgheadline20">6.1. Statically guaranteed validity</a></li>
+<li><a href="#orgheadline21">6.2. Statically guaranteed invalid result handling</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
-<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgheadline4" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline4"><span class="section-number-2">1</span> Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
-<h3 id="orgheadline2">Motivations</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-</div>
-</div>
-<div id="outline-container-orgheadline3" class="outline-3 branch-type">
-<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<div id="outline-container-orgheadline1" class="outline-3 branch-motivation">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Motivations</h3>
+<div class="outline-text-3" id="text-1-1">
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3 branch-example">
-<h3 id="orgheadline4">Examples</h3>
-<div class="outline-text-3" id="text-orgheadline4">
+<div id="outline-container-orgheadline2" class="outline-3 branch-type">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> <a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3 branch-example">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Examples</h3>
+<div class="outline-text-3" id="text-1-3">
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
-<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-orgheadline10" class="outline-2 branch-navigation">
+<h2 id="orgheadline10"><span class="section-number-2">2</span> Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-2">
 </div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">2.1</span> <a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
+</div>
+
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
+<h3 id="orgheadline6"><span class="section-number-3">2.2</span> <a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+<h3 id="orgheadline7"><span class="section-number-3">2.3</span> <a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
+<h3 id="orgheadline8"><span class="section-number-3">2.4</span> <a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><a href="/type/Monad.html">Monads</a></h3>
+<h3 id="orgheadline9"><span class="section-number-3">2.5</span> <a href="/type/Monad.html">Monads</a></h3>
 </div>
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-2 hide">
-<h2 id="orgheadline11">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
-<div class="outline-text-2" id="text-orgheadline11">
+<h2 id="orgheadline11"><span class="section-number-2">3</span> Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-3">
 <div class="MOTIVATION">
 <ul class="org-ul">
 <li>Validate a value once and once only</li>
@@ -114,8 +110,8 @@ type-level proof of which validation was performed.
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-2 asdf">
-<h2 id="orgheadline12">Correct by construction</h2>
-<div class="outline-text-2" id="text-orgheadline12">
+<h2 id="orgheadline12"><span class="section-number-2">4</span> Correct by construction</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 The <code>Valid</code> type is a simple wrapper. The only way to wrap something in <code>Valid</code>
 is to supply a value and a <code>Validator</code> for values of that type to the <code>validate</code>
@@ -136,14 +132,14 @@ validation has occurred.
 </div>
 
 <div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19">Implementations</h2>
-<div class="outline-text-2" id="text-orgheadline19">
+<h2 id="orgheadline19"><span class="section-number-2">5</span> Implementations</h2>
+<div class="outline-text-2" id="text-5">
 </div><div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17">Purescript implementation</h3>
-<div class="outline-text-3" id="text-orgheadline17">
+<h3 id="orgheadline17"><span class="section-number-3">5.1</span> Purescript implementation</h3>
+<div class="outline-text-3" id="text-5-1">
 </div><div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">Valid type</h4>
-<div class="outline-text-4" id="text-orgheadline13">
+<h4 id="orgheadline13"><span class="section-number-4">5.1.1</span> Valid type</h4>
+<div class="outline-text-4" id="text-5-1-1">
 <p>
 A <code>Valid</code> type needs to wrap a value and retain type-level information about
 which validation was used.
@@ -161,8 +157,8 @@ To ensure a <code>Valid</code> value can be created only as the result of a vali
 </div>
 
 <div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">Validator class</h4>
-<div class="outline-text-4" id="text-orgheadline14">
+<h4 id="orgheadline14"><span class="section-number-4">5.1.2</span> Validator class</h4>
+<div class="outline-text-4" id="text-5-1-2">
 <p>
 A <code>Validator</code> takes a value and returns some higher kinded type parameterized by
 that value’s type.
@@ -200,8 +196,8 @@ stopping at the first one.</dd>
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">Validate function</h4>
-<div class="outline-text-4" id="text-orgheadline15">
+<h4 id="orgheadline15"><span class="section-number-4">5.1.3</span> Validate function</h4>
+<div class="outline-text-4" id="text-5-1-3">
 <p>
 The <code>validate</code> function takes a value, validates it using the selected
 <code>Validator</code> instance, and wraps a valid result in the <code>Valid</code> type.
@@ -220,8 +216,8 @@ mapped over the result of <code>validator</code>.
 </div>
 
 <div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16">Complete module</h4>
-<div class="outline-text-4" id="text-orgheadline16">
+<h4 id="orgheadline16"><span class="section-number-4">5.1.4</span> Complete module</h4>
+<div class="outline-text-4" id="text-5-1-4">
 <p>
 Here it is as a <a href="https://github.com/gettyped/gettyped/purescript/src/GetTyped/Valid.purs">complete module</a>.
 </p>
@@ -252,8 +248,8 @@ Here it is as a <a href="https://github.com/gettyped/gettyped/purescript/src/Get
 </div>
 
 <div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18">Flow implementation</h3>
-<div class="outline-text-3" id="text-orgheadline18">
+<h3 id="orgheadline18"><span class="section-number-3">5.2</span> Flow implementation</h3>
+<div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 
 <pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">@flow</span>
@@ -342,11 +338,11 @@ Here it is as a <a href="https://github.com/gettyped/gettyped/purescript/src/Get
 </div>
 </div>
 <div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="orgheadline22">Static guarantees</h2>
-<div class="outline-text-2" id="text-orgheadline22">
+<h2 id="orgheadline22"><span class="section-number-2">6</span> Static guarantees</h2>
+<div class="outline-text-2" id="text-6">
 </div><div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20">Statically guaranteed validity</h3>
-<div class="outline-text-3" id="text-orgheadline20">
+<h3 id="orgheadline20"><span class="section-number-3">6.1</span> Statically guaranteed validity</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 With <code>Valid</code> it is possible to ensure at compile-time that a function argument
 is valid according to a specific <code>Validator</code>.
@@ -389,8 +385,8 @@ This would look something like:
 </div>
 
 <div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21">Statically guaranteed invalid result handling</h3>
-<div class="outline-text-3" id="text-orgheadline21">
+<h3 id="orgheadline21"><span class="section-number-3">6.2</span> Statically guaranteed invalid result handling</h3>
+<div class="outline-text-3" id="text-6-2">
 <p>
 In a language with higher kinds, a <code>Validator</code> can be written to use whichever
 result handling makes most sense by using an appropriate type constructor for
