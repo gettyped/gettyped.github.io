@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-17 Wed 16:48 -->
+<!-- 2016-08-17 Wed 16:50 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -24,62 +24,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline12">4. API</a></li>
-<li><a href="#orgheadline13">5. Maybe vs null checks</a></li>
-<li><a href="#orgheadline14">6. Smart constructors and invariants</a></li>
-<li><a href="#orgheadline15">7. Links</a></li>
+<li><a href="#orgheadline12">API</a></li>
+<li><a href="#orgheadline13">Maybe vs null checks</a></li>
+<li><a href="#orgheadline14">Smart constructors and invariants</a></li>
+<li><a href="#orgheadline15">Links</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgheadline4" class="outline-2 root-navigation branch-type">
-<h2 id="orgheadline4"><span class="section-number-2">1</span> Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2 root-navigation branch-type">
+<h2 id="orgheadline1">Navigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
 </div>
-<div id="outline-container-orgheadline1" class="outline-3 branch-motivation">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Motivations</h3>
-<div class="outline-text-3" id="text-1-1">
-</div>
-</div>
-<div id="outline-container-orgheadline2" class="outline-3 branch-type">
-<h3 id="orgheadline2"><span class="section-number-3">1.2</span> <a href="/type/index.html">Types</a></h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgheadline2" class="outline-3 branch-motivation">
+<h3 id="orgheadline2">Motivations</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-3 branch-example">
-<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Examples</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgheadline3" class="outline-3 branch-type">
+<h3 id="orgheadline3"><a href="/type/index.html">Types</a></h3>
+<div class="outline-text-3" id="text-orgheadline3">
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3 branch-example">
+<h3 id="orgheadline4">Examples</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline10" class="outline-2 branch-navigation">
-<h2 id="orgheadline10"><span class="section-number-2">2</span> Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline5" class="outline-2 branch-navigation">
+<h2 id="orgheadline5">Types&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span>&#xa0;<span class="nav">nav</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline5">
 </div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.1</span> <a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
-</div>
-
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.2</span> <a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
+<h3 id="orgheadline6"><a href="/type/Maybe.html">Maybe <i>null done right</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">2.3</span> <a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
+<h3 id="orgheadline7"><a href="/type/Valid.html">Valid <i>validate once, retain proof</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">2.4</span> <a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+<h3 id="orgheadline8"><a href="/type/Eff.html">Eff <i>track and restrict effects</i></a></h3>
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">2.5</span> <a href="/type/Monad.html">Monads</a></h3>
+<h3 id="orgheadline9"><a href="/type/type-constructor.html">Type constructors <i>higher kinded abstraction</i></a></h3>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><a href="/type/Monad.html">Monads</a></h3>
 </div>
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-2 hide">
-<h2 id="orgheadline11"><span class="section-number-2">3</span> Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="orgheadline11">Introduction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="notoc">notoc</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline11">
 <div class="MOTIVATION">
 <ul class="org-ul">
 <li>Handle optional values without guessing and without exceptions</li>
@@ -97,8 +97,8 @@ requires function arguments that handle both present and absent states.
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12"><span class="section-number-2">4</span> API</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="orgheadline12">API</h2>
+<div class="outline-text-2" id="text-orgheadline12">
 <dl class="org-dl">
 <dt><code>Maybe[A]</code></dt><dd>A type that either contains a value or doesn’t. Usually implemented as a
 sum type with nullary and 1-ary constructors.</dd>
@@ -160,8 +160,8 @@ ensures that the <code>nothing</code> case is handled.
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">5</span> Maybe vs null checks</h2>
-<div class="outline-text-2" id="text-5">
+<h2 id="orgheadline13">Maybe vs null checks</h2>
+<div class="outline-text-2" id="text-orgheadline13">
 <p>
 Assuming the following values:
 </p>
@@ -250,8 +250,8 @@ An accidental transposition results in a compile time error:
 </div>
 
 <div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="orgheadline14"><span class="section-number-2">6</span> Smart constructors and invariants</h2>
-<div class="outline-text-2" id="text-6">
+<h2 id="orgheadline14">Smart constructors and invariants</h2>
+<div class="outline-text-2" id="text-orgheadline14">
 <p>
 <code>Maybe</code> can be used to enforce a type’s invariants. A trivial example is a type
 for integers greater than zero.
@@ -267,8 +267,8 @@ will always be <code>&gt; 0</code>.</dd>
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15"><span class="section-number-2">7</span> Links</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="orgheadline15">Links</h2>
+<div class="outline-text-2" id="text-orgheadline15">
 <ul class="org-ul">
 <li><a href="https://wiki.haskell.org/Maybe">Haskell’s Maybe</a></li>
 <li><a href="https://doc.rust-lang.org/std/option/">Rust’s option</a></li>
