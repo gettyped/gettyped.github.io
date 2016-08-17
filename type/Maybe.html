@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-17 Wed 17:00 -->
+<!-- 2016-08-17 Wed 21:03 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -121,6 +121,10 @@ ensures that the <code>nothing</code> case is handled.
   <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Nothing</span>[<span class="org-constant">A</span>]() <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
 
   <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Just</span>[<span class="org-constant">A</span>](value<span class="org-keyword">:</span> <span class="org-type">A</span>) <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
+
+  <span class="org-keyword">def</span> <span class="org-function-name">nothing</span>[<span class="org-constant">A</span>]<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Nothing</span>()
+
+  <span class="org-keyword">def</span> <span class="org-function-name">just</span>[<span class="org-constant">A</span>](a<span class="org-keyword">:</span> <span class="org-type">A</span>)<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Just</span>(a)
 
   <span class="org-scala-font-lockXprivate">private</span> <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">A</span>, <span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, ma<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>])<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span>
     ma <span class="org-keyword">match</span> {
