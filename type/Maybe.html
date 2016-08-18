@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 14:51 -->
+<!-- 2016-08-18 Thu 15:50 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -100,8 +100,7 @@ requires function arguments that handle both present and absent states.
 <h2 id="orgheadline12">Implementation</h2>
 <div class="outline-text-2" id="text-orgheadline12">
 <p>
-Values of <code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>])
-</code> either contain a single value of <code>A</code> or nothing.
+Values of <code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]</code> either contain a single value of <code>A</code> or nothing.
 </p>
 <div class="org-src-container">
 
@@ -121,9 +120,7 @@ It is usually implemented as a sum type with nullary and 1-ary “cases”.
 </div>
 
 <p>
-Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]
-</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]
-</code>
+Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]</code>
 types available, we’ll make them private and provide two constructor functions.
 </p>
 
@@ -139,8 +136,7 @@ types available, we’ll make them private and provide two constructor functions
 
 <p>
 There is only one method with access to the private internals of
-<code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]
-</code>.
+<code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]</code>.
 </p>
 
 <div class="org-src-container">
