@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 13:26 -->
+<!-- 2016-08-18 Thu 13:39 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -99,12 +99,13 @@ requires function arguments that handle both present and absent states.
 <div id="outline-container-orgheadline12" class="outline-2">
 <h2 id="orgheadline12">API</h2>
 <div class="outline-text-2" id="text-orgheadline12">
-<dl class="org-dl">
-<dt><code>Maybe[A]</code></dt><dd>A type that either contains a value or doesn’t. Usually implemented as a
-sum type with nullary and 1-ary constructors.</dd>
-<dt><code>nothing: Maybe[A]</code> and <code>just: A =&gt; Maybe[A]</code></dt><dd>The two constructors.</dd>
-<dt><code>foldMaybe: (=&gt; B, A =&gt; B, Maybe[A]) =&gt; B</code></dt><dd>Fold over the two possible states.</dd>
-</dl>
+<ul class="org-ul">
+<li>::
+A type that either contains a value or doesn’t. Usually implemented as a
+sum type with nullary and 1-ary constructors.</li>
+<li id="<code>nothing: Maybe[A]</code> and <code>just: A =&gt; Maybe[A]</code>">The two constructors.</li>
+<li id="<code>foldMaybe: (=&gt; B, A =&gt; B, Maybe[A]) =&gt; B</code>">Fold over the two possible states.</li>
+</ul>
 
 <p>
 There is no way to dereference the Maybe-wrapped value directly. The compiler
