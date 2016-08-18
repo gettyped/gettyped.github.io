@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 19:22 -->
+<!-- 2016-08-18 Thu 20:57 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -25,7 +25,7 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline12">Implementation</a></li>
-<li><a href="#orgheadline13">Maybe vs null checks</a></li>
+<li><a href="#orgheadline13"><span class="done DONE">DONE</span> Maybe vs null checks</a></li>
 <li><a href="#orgheadline14">Smart constructors and invariants</a></li>
 <li><a href="#orgheadline15">Links</a></li>
 </ul>
@@ -120,8 +120,8 @@ It is usually implemented as a sum type with nullary and 1-ary “cases”.
 </div>
 
 <p>
-Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]</code>
-types available, we’ll make them private and provide two constructor functions.
+Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]</code> types available, we’ll
+make them private and provide two constructor functions.
 </p>
 <div class="org-src-container">
 
@@ -138,9 +138,9 @@ There is only one method with access to the private internals of <code class="sr
 </p>
 <div class="org-src-container">
 
-<pre class="src src-scala" id="orgsrcblock4"><span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
-  <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
-  <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
+<pre class="src src-scala" id="orgsrcblock4"><span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](nothing<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, just<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
+  <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> nothing
+  <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> just(a)
 }
 </pre>
 </div>
@@ -156,9 +156,9 @@ Here’s the complete definition.
 <div class="org-src-container">
 
 <pre class="src src-scala" id="orgsrcblock5"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
-  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
-    <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
-    <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
+  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](nothing<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, just<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
+    <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> nothing
+    <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> just(a)
   }
 }
 
@@ -177,7 +177,7 @@ Here’s the complete definition.
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">Maybe vs null checks</h2>
+<h2 id="orgheadline13"><span class="done DONE">DONE</span> Maybe vs null checks</h2>
 <div class="outline-text-2" id="text-orgheadline13">
 <p>
 Assuming the following values:
@@ -185,8 +185,11 @@ Assuming the following values:
 
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-function-name">absent</span> <span class="org-variable-name">::</span> b
-<span class="org-function-name">present</span> <span class="org-variable-name">::</span> a <span class="org-variable-name">-&gt;</span> b
+<pre class="src src-scala" id="orgsrcblock6"><span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Name</span>(first<span class="org-keyword">:</span> <span class="org-type">String</span>, last<span class="org-keyword">:</span> <span class="org-type">String</span>)
+
+<span class="org-keyword">val</span> <span class="org-variable-name">absent</span><span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span> <span class="org-string">"Nobody"</span>
+
+<span class="org-keyword">def</span> <span class="org-function-name">present</span>(n<span class="org-keyword">:</span> <span class="org-type">Name</span>)<span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span> s<span class="org-string">"</span><span class="org-variable-name">$first</span><span class="org-string"> </span><span class="org-variable-name">$last</span><span class="org-string">"</span>
 </pre>
 </div>
 
@@ -196,7 +199,8 @@ A typical null-check,
 
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-keyword">if</span> a <span class="org-variable-name">==</span> null <span class="org-keyword">then</span> absent <span class="org-keyword">else</span> present a
+<pre class="src src-scala" id="orgsrcblock7"><span class="org-keyword">def</span> <span class="org-function-name">describe</span>(n<span class="org-keyword">:</span> <span class="org-type">Name</span>)<span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span>
+  <span class="org-keyword">if</span> (n == <span class="org-constant">null</span>) absent <span class="org-keyword">else</span> present(n)
 </pre>
 </div>
 
@@ -205,14 +209,15 @@ exhibits a lack of type safety in two ways:
 </p>
 
 <dl class="org-dl">
-<dt>assumption</dt><dd>The programmer assumes <code>a</code> is not <code>null</code> and doesn’t write the null check.</dd>
+<dt>assumption</dt><dd>The programmer assumes <code class="src src-scala">n</code> is not <code class="src src-scala"><span class="org-constant">null</span></code> and doesn’t write the null check.</dd>
 <dt>boolean blindness</dt><dd><p>
      The compiler doesn’t stop accidental dereferencing, as in this
 transposition:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-keyword">if</span> a <span class="org-variable-name">==</span> null <span class="org-keyword">then</span> present a <span class="org-keyword">else</span> absent
+<pre class="src src-scala" id="orgsrcblock8"><span class="org-keyword">def</span> <span class="org-function-name">describeT</span>(n<span class="org-keyword">:</span> <span class="org-type">Name</span>)<span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span>
+  <span class="org-keyword">if</span> (n == <span class="org-constant">null</span>) present(n) <span class="org-keyword">else</span> absent
 </pre>
 </div></dd>
 </dl>
@@ -238,18 +243,19 @@ find yourself in need of sat solvers to figure out what the hell is going on.
 </blockquote>
 
 <p>
-<code>Maybe</code> solves both issues.
+<code class="src src-scala"><span class="org-constant">Maybe</span></code> solves both issues.
 </p>
 
 <dl class="org-dl">
-<dt>assumption</dt><dd>The programmer cannot get at the value of a <code>Maybe</code> without going through
-<code>foldMaybe</code>.</dd>
+<dt>assumption</dt><dd>The programmer cannot get at the value of a <code class="src src-scala"><span class="org-constant">Maybe</span></code> without going through
+<code class="src src-scala"><span class="org-constant">Maybe</span>.fold</code>.</dd>
 <dt>boolean blindness</dt><dd><p>
-     <code>foldMayb</code> provides a value only to the <code>just</code> case:
+     <code class="src src-scala"><span class="org-constant">Maybe</span>.fold</code> provides a value only to the <code class="src src-scala">just</code> case:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-function-name">foldMaybe</span> absent present a
+<pre class="src src-scala" id="orgsrcblock9"><span class="org-keyword">def</span> <span class="org-function-name">describe</span>(n<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">Name</span>])<span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span>
+  n.fold(absent, present)
 </pre>
 </div>
 <p>
@@ -257,9 +263,8 @@ An accidental transposition results in a compile time error:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-purescript"><span class="org-function-name">foldMaybe</span> present absent a
-<span class="org-comment-delimiter">-- </span><span class="org-comment">error: expected arg types: b     , a -&gt; b, Maybe a</span>
-<span class="org-comment-delimiter">--                       </span><span class="org-comment">got: a -&gt; b, b     , Maybe a</span>
+<pre class="src src-scala" id="orgsrcblock10"><span class="org-keyword">def</span> <span class="org-function-name">describeT</span>(n<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">Name</span>])<span class="org-keyword">:</span> <span class="org-type">String</span> <span class="org-keyword">=</span>
+  n.fold(present, absent)
 </pre>
 </div></dd>
 </dl>
