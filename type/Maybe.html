@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 13:39 -->
+<!-- 2016-08-18 Thu 14:51 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -24,7 +24,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline12">API</a></li>
+<li><a href="#orgheadline12">Implementation</a></li>
 <li><a href="#orgheadline13">Maybe vs null checks</a></li>
 <li><a href="#orgheadline14">Smart constructors and invariants</a></li>
 <li><a href="#orgheadline15">Links</a></li>
@@ -97,41 +97,87 @@ requires function arguments that handle both present and absent states.
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">API</h2>
+<h2 id="orgheadline12">Implementation</h2>
 <div class="outline-text-2" id="text-orgheadline12">
-<ul class="org-ul">
-<li>::
-A type that either contains a value or doesn’t. Usually implemented as a
-sum type with nullary and 1-ary constructors.</li>
-<li id="<code>nothing: Maybe[A]</code> and <code>just: A =&gt; Maybe[A]</code>">The two constructors.</li>
-<li id="<code>foldMaybe: (=&gt; B, A =&gt; B, Maybe[A]) =&gt; B</code>">Fold over the two possible states.</li>
-</ul>
+<p>
+Values of <code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>])
+</code> either contain a single value of <code>A</code> or nothing.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-scala" id="orgsrcblock1"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
+</pre>
+</div>
 
 <p>
-There is no way to dereference the Maybe-wrapped value directly. The compiler
-ensures that the <code>nothing</code> case is handled.
+It is usually implemented as a sum type with nullary and 1-ary “cases”.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-scala" id="orgsrcblock2"><span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Nothing</span>[<span class="org-constant">A</span>]() <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {}
+
+<span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Just</span>[<span class="org-constant">A</span>](a<span class="org-keyword">:</span> <span class="org-type">A</span>) <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {}
+</pre>
+</div>
+
+<p>
+Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]
+</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]
+</code>
+types available, we’ll make them private and provide two constructor functions.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-scala" id="orgsrcblock1"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
-  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-constant">Maybe</span>.fold(b, f, <span class="org-keyword">this</span>)
-}
-
-<span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Nothing</span>[<span class="org-constant">A</span>]() <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
-
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Just</span>[<span class="org-constant">A</span>](value<span class="org-keyword">:</span> <span class="org-type">A</span>) <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>]
-
+<pre class="src src-scala" id="orgsrcblock3"><span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
   <span class="org-keyword">def</span> <span class="org-function-name">nothing</span>[<span class="org-constant">A</span>]<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Nothing</span>()
 
   <span class="org-keyword">def</span> <span class="org-function-name">just</span>[<span class="org-constant">A</span>](a<span class="org-keyword">:</span> <span class="org-type">A</span>)<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Just</span>(a)
+}
+</pre>
+</div>
 
-  <span class="org-scala-font-lockXprivate">private</span> <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">A</span>, <span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, ma<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>])<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span>
-    ma <span class="org-keyword">match</span> {
-      <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
-      <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
-    }
+<p>
+There is only one method with access to the private internals of
+<code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]
+</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scala" id="orgsrcblock4"><span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
+  <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
+  <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
+}
+</pre>
+</div>
+
+<p>
+There is no way to dereference the Maybe-wrapped value directly. <code>fold</code> ensures
+that the <code>Nothing</code> case is handled.
+</p>
+
+<p>
+Here’s the complete definition.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scala" id="orgsrcblock5"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
+  <span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
+    <span class="org-keyword">case</span> <span class="org-type">Nothing</span>() <span class="org-keyword">=&gt;</span> b
+    <span class="org-keyword">case</span> <span class="org-type">Just</span>(<span class="org-variable-name">a</span>)   <span class="org-keyword">=&gt;</span> f(a)
+  }
+}
+
+<span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Nothing</span>[<span class="org-constant">A</span>]() <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {}
+
+<span class="org-scala-font-lockXprivate">private</span> <span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">case</span> <span class="org-keyword">class</span> <span class="org-type">Just</span>[<span class="org-constant">A</span>](a<span class="org-keyword">:</span> <span class="org-type">A</span>) <span class="org-keyword">extends</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {}
+
+<span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
+  <span class="org-keyword">def</span> <span class="org-function-name">nothing</span>[<span class="org-constant">A</span>]<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Nothing</span>()
+
+  <span class="org-keyword">def</span> <span class="org-function-name">just</span>[<span class="org-constant">A</span>](a<span class="org-keyword">:</span> <span class="org-type">A</span>)<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] <span class="org-keyword">=</span> <span class="org-constant">Just</span>(a)
 }
 </pre>
 </div>
