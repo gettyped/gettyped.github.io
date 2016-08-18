@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 15:50 -->
+<!-- 2016-08-18 Thu 19:22 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -123,7 +123,6 @@ It is usually implemented as a sum type with nullary and 1-ary “cases”.
 Since it makes no sense to have <code class="src src-scala"><span class="org-constant">Nothing</span>[<span class="org-constant">A</span>]</code> and <code class="src src-scala"><span class="org-constant">Some</span>[<span class="org-constant">A</span>]</code>
 types available, we’ll make them private and provide two constructor functions.
 </p>
-
 <div class="org-src-container">
 
 <pre class="src src-scala" id="orgsrcblock3"><span class="org-keyword">object</span> <span class="org-constant">Maybe</span> {
@@ -135,10 +134,8 @@ types available, we’ll make them private and provide two constructor functions
 </div>
 
 <p>
-There is only one method with access to the private internals of
-<code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]</code>.
+There is only one method with access to the private internals of <code class="src src-scala"><span class="org-constant">Maybe</span>[<span class="org-constant">A</span>]</code>.
 </p>
-
 <div class="org-src-container">
 
 <pre class="src src-scala" id="orgsrcblock4"><span class="org-keyword">def</span> <span class="org-function-name">fold</span>[<span class="org-constant">B</span>](b<span class="org-keyword">:</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>, f<span class="org-keyword">:</span> <span class="org-type">A</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">B</span>)<span class="org-keyword">:</span> <span class="org-type">B</span> <span class="org-keyword">=</span> <span class="org-keyword">this</span> <span class="org-keyword">match</span> {
@@ -149,14 +146,13 @@ There is only one method with access to the private internals of
 </div>
 
 <p>
-There is no way to dereference the Maybe-wrapped value directly. <code>fold</code> ensures
-that the <code>Nothing</code> case is handled.
+There is no way to dereference the Maybe-wrapped value directly. <code class="src src-scala">fold</code> ensures
+that the <code class="src src-scala"><span class="org-constant">Nothing</span></code> case is handled.
 </p>
 
 <p>
 Here’s the complete definition.
 </p>
-
 <div class="org-src-container">
 
 <pre class="src src-scala" id="orgsrcblock5"><span class="org-scala-font-lockXsealed">sealed</span> <span class="org-scala-font-lockXabstract">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Maybe</span>[<span class="org-constant">A</span>] {
