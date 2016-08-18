@@ -497,8 +497,13 @@ h1.title {
     background: #f5f3f3;
 }
 
+.MOTIVATION ul {
+  padding-left: 0;
+}
+
 .listing {
     position: relative;
+    margin-top: 3.2rem;
 }
 
 .listing .MOTIVATION {
@@ -511,38 +516,30 @@ h1.title {
     display: none;
 }
 
-.listing .MOTIVATION li {
-    list-style: inside disc;
-}
-
 .listing h3 {
     font-size: 1.5rem;
     font-family: Lato;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .listing h3 i {
-    font-style: normal;
-    font-weight: normal;
-    display: block;
+    display: none;
 }
 
-.listing h3 i:before {
-    content: '—';
-}
 
 .listing h3 a {
     color: navy;
 }
 
 #content {
-    margin-top: 48px;
+    margin: 48px 270px 0 0;
     margin-left: 250px;
     padding: 0 3rem 6rem 3rem;
     background: white;
     max-width: 700px;
+    min-width: 530px;
     position: relative;
-    margin-right: 270px;
 }
 
 .tag {
@@ -553,8 +550,10 @@ h1.title {
     display: none;
 }
 
-ul, ol {
+ul, ol,
+.listing .MOTIVATION ul {
     line-height: 1.6;
+    padding-left: 1.4em;
 }
 
 li {
