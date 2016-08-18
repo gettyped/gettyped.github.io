@@ -188,7 +188,8 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside; }
+  list-style: circle outside;
+  }
 ol {
   list-style: decimal inside; }
 ol, ul {
@@ -330,7 +331,7 @@ body {
 }
 
 body {
-    background: #343131;
+    background: #fff7f7;
 }
 
 #org-div-home-and-up {
@@ -344,8 +345,8 @@ body {
     display: block;
     position: absolute;
     z-index: 100;
-    background: #0f50a2;
-    color: #b8dcf1;
+    background: #fff7f7;
+    color: #a78574;
     font-size: x-large;
     line-height: 48px;
     left: 0;
@@ -359,8 +360,8 @@ body {
 
 .root-navigation {
     position: absolute;
-    left: 24px;
-    top: 68px;
+    left: -226px;
+    top: 12px;
     z-index: 500;
     display: table;
     width: 200px;
@@ -394,13 +395,13 @@ body {
 .root-navigation.branch-type .branch-type a,
 .root-navigation.branch-example .branch-example a {
     background: transparent;
-    color: whitesmoke;
+    color: #a78574;
 }
 
 .branch-navigation {
     position: absolute;
-    left: 24px;
-    top: 72px;
+    left: -226px;
+    top: 12px;
     width: 250px;
     height: 100%;
     color: whitesmoke;
@@ -411,7 +412,7 @@ body {
 }
 
 .branch-navigation a {
-    color: whitesmoke;
+    color: #a78574;
     text-decoration: none;
     font-family: sans-serif;
 }
@@ -437,16 +438,23 @@ body {
 h1.title {
     margin: 0 -3rem;
     padding: 24px 3rem 0.5em 3rem;
-    color: whitesmoke;
-    background: #5ea2ca;
+    color: #191970;
+    background: #f5f3f3;
     font-size: 4rem;
 }
 
+#table-of-contents {
+  left: 100%;
+  background: red;
+  position: absolute;
+  top: 0;
+}
+
 #text-table-of-contents {
-    max-height: 0;
     padding: 0;
-    overflow-y: hidden;
-    transition: max-height 0.4s, padding 0.4s;
+    margin: 48px 0 0 12px;
+    position: fixed;
+    width: 250px;
 }
 
 #text-table-of-contents ul {
@@ -462,34 +470,20 @@ h1.title {
     text-decoration: none;
 }
 
-#table-of-contents.show > #text-table-of-contents {
-    max-height: 1000px;
-    padding: 18px 0;
-}
-
 #table-of-contents > h2 {
-    visibility: hidden;
     padding: 0;
-    margin: 0;
+    margin: 24px 0 0 12px;
+    position: fixed;
+    width: 250px;
     line-height: 1;
     font-size: 1.4rem;
     font-family: Lato;
-    margin-top: -1.4rem;
-    text-align: right;
-}
-
-#table-of-contents > h2:after {
-    visibility: visible;
-    cursor: pointer;
-    content: 'SHOW TOC';
-}
-
-#table-of-contents.show > h2:after {
-    content: 'HIDE TOC';
+    font-weight: normal;
+    text-transform: uppercase;
 }
 
 .MOTIVATION:before {
-    content: 'Motivation';
+    /* content: 'Motivation'; */
     font-weight: normal;
     display: block;
     line-height: 1.6;
@@ -499,8 +493,8 @@ h1.title {
 
 .MOTIVATION {
     margin: -28px -3rem 28px -3rem;
-    padding: 24px 3rem 1px 3rem;
-    background: #b8dcf1;
+    padding: 0 3rem 1px 3rem;
+    background: #f5f3f3;
 }
 
 .listing {
@@ -547,6 +541,8 @@ h1.title {
     padding: 0 3rem 6rem 3rem;
     background: white;
     max-width: 700px;
+    position: relative;
+    margin-right: 270px;
 }
 
 .tag {
@@ -562,7 +558,7 @@ ul, ol {
 }
 
 li {
-    list-style: outside circle;
+    list-style: circle outside;
 }
 
 h1, h2, h3, h4, h5, h6 {
