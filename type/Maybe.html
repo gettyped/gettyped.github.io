@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 21:21 -->
+<!-- 2016-08-18 Thu 21:32 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -291,16 +291,31 @@ compile errors.</li>
 <h2 id="orgheadline15">Smart constructors and invariants</h2>
 <div class="outline-text-2" id="text-orgheadline15">
 <p>
-<code>Maybe</code> can be used to enforce a type’s invariants. A trivial example is a type
+<code class="src src-scala"><span class="org-constant">Maybe</span></code> can be used to enforce a type’s invariants. A trivial example is a type
 for integers greater than zero.
 </p>
 
 <dl class="org-dl">
-<dt><code>Natural</code></dt><dd>The type of integers <code>&gt; 0</code>.</dd>
-<dt><code>natural :: Int -&gt; Maybe Natural</code></dt><dd>The only constructor for <code>Natural</code> values. It returns <code>nothing</code> if its
-input is <code>&lt; 1</code>. This creates a compile time guarantee that <code>Natural</code> values
-will always be <code>&gt; 0</code>.</dd>
+<dt><code class="src src-scala"><span class="org-constant">Natural</span></code></dt><dd>The type of integers <code class="src src-scala">&gt; <span class="org-constant">0</span></code>.</dd>
+<dt><code class="src src-scala">natural<span class="org-keyword">:</span> <span class="org-type">Int</span> <span class="org-keyword">=&gt;</span> <span class="org-constant">Maybe</span>[<span class="org-constant">Natural</span>]</code></dt><dd>The only constructor for <code class="src src-scala"><span class="org-constant">Natural</span></code> values. It returns <code class="src src-scala">nothing</code> if its input is
+<code class="src src-scala">&lt; <span class="org-constant">1</span></code>. This creates a compile time guarantee that <code class="src src-scala"><span class="org-constant">Natural</span></code> values will always
+be <code class="src src-scala">&gt; <span class="org-constant">0</span></code>.</dd>
 </dl>
+
+<div class="org-src-container">
+
+<pre class="src src-scala"><span class="org-scala-font-lockXfinal">final</span> <span class="org-keyword">class</span> <span class="org-type">Natural</span> <span class="org-scala-font-lockXprivate">private</span>(n<span class="org-keyword">:</span> <span class="org-type">Int</span>) {
+  <span class="org-keyword">val</span> <span class="org-variable-name">value</span><span class="org-keyword">:</span> <span class="org-type">Int</span> <span class="org-keyword">=</span> n
+}
+
+<span class="org-keyword">object</span> <span class="org-constant">Natural</span> {
+  <span class="org-keyword">import</span> <span class="org-constant">Maybe</span>.<span class="org-keyword">_</span>
+
+  <span class="org-keyword">def</span> <span class="org-function-name">natural</span>(n<span class="org-keyword">:</span> <span class="org-type">Int</span>)<span class="org-keyword">:</span> <span class="org-type">Maybe</span>[<span class="org-constant">Natural</span>] <span class="org-keyword">=</span>
+    <span class="org-keyword">if</span> (n &gt; <span class="org-constant">0</span>) just(<span class="org-constant">Natural</span>(n)) <span class="org-keyword">else</span> nothing
+}
+</pre>
+</div>
 </div>
 </div>
 
