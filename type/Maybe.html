@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-08-18 Thu 21:02 -->
+<!-- 2016-08-18 Thu 21:13 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>type : Maybe</title>
@@ -25,9 +25,13 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline12">Implementation</a></li>
-<li><a href="#orgheadline13"><span class="done DONE">DONE</span> Maybe vs null checks</a></li>
-<li><a href="#orgheadline14">Smart constructors and invariants</a></li>
-<li><a href="#orgheadline15">Links</a></li>
+<li><a href="#orgheadline13">Maybe vs null checks</a>
+<ul>
+<li><a href="#orgheadline14">Demos</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline15">Smart constructors and invariants</a></li>
+<li><a href="#orgheadline16">Links</a></li>
 </ul>
 </div>
 </nav>
@@ -177,7 +181,7 @@ Here’s the complete definition.
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="done DONE">DONE</span> Maybe vs null checks</h2>
+<h2 id="orgheadline13">Maybe vs null checks</h2>
 <div class="outline-text-2" id="text-orgheadline13">
 <p>
 Assuming the following values:
@@ -269,11 +273,21 @@ An accidental transposition results in a compile time error:
 </div></dd>
 </dl>
 </div>
-</div>
 
-<div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="orgheadline14">Smart constructors and invariants</h2>
-<div class="outline-text-2" id="text-orgheadline14">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">Demos</h3>
+<div class="outline-text-3" id="text-orgheadline14">
+<ul class="org-ul">
+<li><a href="http://www.scala-js-fiddle.com/gist/1b8808f797de1909ac95371eaf1ed97b/Maybe_null.scala">Null-check transposition with runtime failure</a>.</li>
+<li><a href="http://www.scala-js-fiddle.com/gist/1b8808f797de1909ac95371eaf1ed97b/Maybe_no_null.scala">Transposition with compile time failure</a>. Uncomment the indicated code to cause
+compile errors.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15">Smart constructors and invariants</h2>
+<div class="outline-text-2" id="text-orgheadline15">
 <p>
 <code>Maybe</code> can be used to enforce a type’s invariants. A trivial example is a type
 for integers greater than zero.
@@ -288,9 +302,9 @@ will always be <code>&gt; 0</code>.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15">Links</h2>
-<div class="outline-text-2" id="text-orgheadline15">
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16">Links</h2>
+<div class="outline-text-2" id="text-orgheadline16">
 <ul class="org-ul">
 <li><a href="https://wiki.haskell.org/Maybe">Haskell’s Maybe</a></li>
 <li><a href="https://doc.rust-lang.org/std/option/">Rust’s option</a></li>
